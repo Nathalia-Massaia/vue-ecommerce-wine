@@ -7,6 +7,7 @@
         fullWidth ? 'fullWidth' : '',
       ]"
       :disabled="disabled"
+      @click="handleAction"
       v-if="!route"
     >
       {{ label }}
@@ -34,9 +35,11 @@ export default Vue.extend({
   name: 'Button',
   props: ['label', 'type', 'size', 'fullWidth', 'route', 'disabled'],
 
-  data() {
-    return {};
-  },
+  methods: {
+    handleAction(){
+      this.$emit('action')
+    }
+  }
 });
 </script>
 

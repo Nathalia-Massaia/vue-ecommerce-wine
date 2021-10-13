@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 
 Vue.config.productionTip = false;
+Vue.config.silent = true
 
 Vue.filter('currency', (value: number) => {
   return new Intl.NumberFormat('currency', {

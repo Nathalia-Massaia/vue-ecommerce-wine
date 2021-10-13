@@ -6,8 +6,8 @@
       <div class="line line-3"></div>
     </div>
 
-    <div class="title" v-if='cartQuantity'>
-      WineBox ({{cartQuantity}})
+    <div class="title">
+      WineBox {{ cartQuantity ? `(${cartQuantity})` : '' }}
     </div>
   </div>
 </template>

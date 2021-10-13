@@ -10,16 +10,13 @@
           <ProductListItem :data="product" />
         </div>
       </div>
-      <div
-        class="productListItem"
-        v-for="product in products"
-        :key="product.name"
-      >
-        <div class="listItem">
-          <ProductListItem :data="product" />
-        </div>
-      </div>
     </Slider>
+
+    <ToastNotification
+      :message="toast.message"
+      :type="toast.type"
+      :timeout="toast.timeout"
+    />
   </div>
 </template>
 
@@ -27,6 +24,7 @@
 import Vue from 'vue';
 import Slider from '@/components/Slider/Slider.vue';
 import ProductListItem from '@/components/ProductListItem/ProductListItem.vue';
+import ToastNotification from '@/components/ToastNotification/ToastNotification.vue';
 
 export default Vue.extend({
   name: 'ProductSlider',
@@ -34,9 +32,16 @@ export default Vue.extend({
   components: {
     ProductListItem,
     Slider,
+    ToastNotification,
   },
   data() {
-    return {};
+    return {
+      toast: {
+        message: '',
+        type: '',
+        timeout: 0,
+      },
+    };
   },
 });
 </script>

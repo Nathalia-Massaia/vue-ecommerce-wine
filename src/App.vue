@@ -28,6 +28,7 @@ export default Vue.extend({
 
 <style lang="scss">
 @import '@/sass/global.scss';
+
 main {
   padding: 0 10%;
   margin-top: 11rem;

@@ -1,10 +1,10 @@
 <template>
   <div class="homeWrapper">
-    <Banner />
+    <!-- <Banner /> -->
 
     <!-- <Counter /> -->
     <EmptyList v-if="!allProducts.length" />
-    <ProductSlider :products="allProducts" v-if="allProducts.length"/>
+    <ProductSlider :products="allProducts" v-if="allProducts.length" />
   </div>
 </template>
 
@@ -13,7 +13,6 @@ import Vue from 'vue';
 import Banner from '@/components/Banner/Banner.vue';
 import ProductListItem from '@/components/ProductListItem/ProductListItem.vue';
 import Counter from '@/components/Counter/Counter.vue';
-import ProductList from '@/components/ProductList/ProductList.vue';
 import ProductSlider from '@/components/ProductSlider/ProductSlider.vue';
 import EmptyList from '@/components/EmptyList/EmptyList.vue';
 import ProductService from '@/services/product.service';
@@ -25,7 +24,6 @@ export default Vue.extend({
     Banner,
     ProductListItem,
     Counter,
-    ProductList,
     ProductSlider,
     EmptyList,
   },

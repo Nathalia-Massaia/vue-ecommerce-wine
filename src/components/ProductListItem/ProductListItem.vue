@@ -38,7 +38,12 @@
         </div>
       </MediaMatch>
 
-      <Button label="Adicionar" :fullWidth="true" :disabled="!data.available" />
+      <Button
+        label="Adicionar"
+        :fullWidth="true"
+        :disabled="!data.available"
+        @action="handleAddToCart"
+      />
     </div>
   </div>
 </template>
@@ -47,7 +52,7 @@
 import Vue from 'vue';
 import Button from '@/components/Button/Button.vue';
 import MediaMatch from '@/components/MediaMatch/MediaMatch.vue';
-import { ProductProps } from '@/types';
+import { ProductProps, CartActionsEnum } from '@/types';
 
 export default Vue.extend({
   props: ['data'],
@@ -70,14 +75,27 @@ export default Vue.extend({
       }).format(this.data.priceMember);
 
       this.priceMember.currencySymbol = formattedPrice.substring(0, 2);
+
       this.priceMember.amount = formattedPrice
         .replace(this.priceMember.currencySymbol, '')
         .split(',')[0]
         .trim();
+
       this.priceMember.cents = formattedPrice
         .replace(this.priceMember.currencySymbol, '')
         .split(',')[1]
         .trim();
+    },
+
+    handleAddToCart() {
+      const data = {
+        item: this.data,
+        action: CartActionsEnum.ADD,
+      };
+      this.$store.dispatch('setCartItems', data);
+      this.$store.dispatch('setToastData', {
+        message: 'Produto adicionado ao carrinho',
+      });
     },
   },
   mounted() {

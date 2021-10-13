@@ -1,0 +1,24 @@
+@import '@/sass/master';
+
+.toastNotificationWrapper {
+  position: fixed;
+  z-index: map-get($layers, alwaysOnTop);
+  top: map-get($spacings, xsmall);
+  right: 0;
+  background-color: map-get($colors, wine);
+  color: map-get($colors, white);
+  padding: map-get($spacings, small);
+  border-top-left-radius: map-get($border, radius);
+  border-bottom-left-radius: map-get($border, radius);
+  transition: map-get($transition, slow);
+  transform: translateX(50rem);
+
+  h4 {
+    font-size: map-get(map-get($font, sizes), small);
+    letter-spacing: 0.08rem;
+  }
+
+  &.open {
+    transform: translateX(0);
+  }
+}

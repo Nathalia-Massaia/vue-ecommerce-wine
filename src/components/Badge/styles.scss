@@ -1,0 +1,16 @@
+@import '@/sass/master';
+
+.badgeWrapper {
+  width: 2rem;
+  height: 2rem;
+  @include flexbox(row, center, center, 0);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: map-get($colors, white);
+  box-shadow: 0 0.1rem 0.5rem -0.2rem map-get($colors, black);
+  border-radius: 50%;
+  color: map-get($colors, green);
+  font-weight: map-get($font, bold);
+  transition: map-get($transition, fast);
+}

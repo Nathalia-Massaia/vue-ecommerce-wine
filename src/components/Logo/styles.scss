@@ -1,0 +1,19 @@
+@import '@/sass/master';
+
+.logoWrapper {
+  z-index: map-get($layers, overlay);
+
+  img {
+    transition: map-get($transition, default);
+
+    &:hover {
+      transform: scale(0.9);
+    }
+  }
+
+  &.onMobileMenu {
+    filter: invert(1);
+    position: absolute;
+    left: 50%;
+  }
+}

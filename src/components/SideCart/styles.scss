@@ -1,0 +1,78 @@
+@import '@/sass/master';
+
+.sideCartWrapper {
+  position: fixed;
+  @include flexbox(column, center, space-between, 0);
+  background-color: map-get($colors, iceWhite);
+  right: 0;
+  top: 0;
+  width: 35rem;
+  height: 100%;
+  transition: map-get($transition, default);
+  transform: translateX(50rem);
+  z-index: map-get($layers, modal);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    transform: translateX(100%);
+  }
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  .cartHeaderWrapper {
+    background-color: map-get($colors, white);
+    height: 6rem;
+    width: 100%;
+    @include flexbox(row, center, flex-start, 0);
+    padding: 0 map-get($spacings, xsmall);
+
+    .backIcon {
+      @include flexbox(row, center, flex-start, 0);
+      position: relative;
+      cursor: pointer;
+      width: 3rem;
+      height: 3rem;
+
+      .line {
+        height: 0.15rem;
+        background-color: map-get($colors, black);
+        position: absolute;
+        transform: translateY(1.6rem);
+
+        &.line-1 {
+          left: 0.3rem;
+          top: 0.01rem;
+          width: 2.2rem;
+        }
+
+        &.line-2 {
+          width: 1.2rem;
+          transform: translateY(1.6rem) rotate(-45deg);
+          top: -0.4rem;
+        }
+
+        &.line-3 {
+          width: 1.2rem;
+          transform: translateY(1.6rem) rotate(-135deg);
+          top: 0.4rem;
+        }
+      }
+    }
+
+    .title {
+      font-size: map-get(map-get($font, sizes), xlarge);
+      font-weight: map-get($font, bold);
+      margin-left: map-get($spacings, xsmall);
+    }
+  }
+
+  .cartFooterWrapper {
+    height: 14rem;
+    width: 100%;
+    background-color: map-get($colors, white);
+    padding: map-get($spacings, small) map-get($spacings, xsmall);
+    @include flexbox(row, center, flex-start, 0);
+  }
+}

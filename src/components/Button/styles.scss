@@ -1,0 +1,54 @@
+@import '@/sass/master';
+
+.buttonWrapper {
+  button,
+  a {
+    text-decoration: none;
+    font-size: map-get(map-get($font, sizes), small);
+    border: none;
+    cursor: pointer;
+    border-radius: map-get($border, radius);
+    color: map-get($colors, white);
+    transition: map-get($transition, default);
+    text-align: center;
+    font-weight: map-get($font, bold);
+    letter-spacing: 0.1rem;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:disabled {
+      background-color: map-get($colors, midGray);
+      cursor: not-allowed;
+
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+
+  .primary {
+    background: map-get($colors, wine);
+  }
+
+  .secondary {
+    background-color: map-get($colors, lightGreen);
+  }
+
+  .small {
+    padding: map-get($spacings, xxsmall) map-get($spacings, small);
+  }
+
+  .medium {
+    padding: 1.15rem 4.4rem;
+  }
+
+  .large {
+    padding: map-get($spacings, xsmall) map-get($spacings, xxlarge);
+  }
+
+  .fullWidth {
+    width: 100%;
+  }
+}

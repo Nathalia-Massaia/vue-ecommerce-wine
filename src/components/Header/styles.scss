@@ -1,0 +1,43 @@
+@import '@/sass/master';
+
+.headerWrapper {
+  @include flexbox(row, center, space-between, 0);
+  height: 9rem;
+  background-color: map-get($colors, white);
+  padding: 0 10%;
+
+  .logoAndMenuWrapper {
+    width: 100%;
+    @include flexbox(row, center, flex-start, map-get($spacings, xxlarge));
+  }
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    justify-content: space-between;
+    position: relative;
+
+    .logoAndMenuWrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+
+      img:first-child {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+
+        &:hover {
+          transform: translateX(-50%) translateY(-50%) scale(0.9);
+        }
+      }
+
+      div:last-child {
+        grid-column-start: 1;
+        grid-row-start: 1;
+      }
+    }
+  }
+}

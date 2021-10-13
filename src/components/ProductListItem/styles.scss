@@ -1,0 +1,126 @@
+@import '@/sass/master';
+
+.productListItemWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 38rem;
+  height: 21rem;
+  background-color: map-get($colors, white);
+  padding: map-get($spacings, xxsmall);
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.05);
+
+  .picture {
+    @include flexbox(row, center, center, 0);
+    img {
+      object-fit: cover;
+      max-width: 100%;
+      cursor: pointer;
+      transition: map-get($transition, default);
+
+      &:hover {
+        filter: opacity(0.8);
+      }
+    }
+  }
+
+  .details {
+    @include flexbox(column, flex-start, space-around, 0);
+
+    .productTitle {
+      font-size: map-get(map-get($font, sizes), medium);
+      line-height: 1.6rem;
+      font-weight: map-get($font, bold);
+    }
+
+    .unavailableMessage {
+      font-size: map-get(map-get($font, sizes), xsmall);
+    }
+
+    .oldPrice {
+      font-size: map-get(map-get($font, sizes), small);
+      text-decoration-line: line-through;
+      color: map-get($colors, darkGray);
+      font-weight: map-get($font, bold);
+    }
+
+    .priceMember {
+      @include flexbox(column, flex-start, center, 0);
+
+      span {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: map-get(map-get($font, sizes), xxsmall);
+        color: map-get($colors, black);
+        line-height: 1rem;
+      }
+
+      .priceWrapper {
+        @include flexbox(row, baseline, center, 0);
+        color: map-get($colors, wine);
+        font-weight: map-get($font, bold);
+        font-size: map-get(map-get($font, sizes), medium);
+
+        .currencySymbol {
+          margin-right: 0.3rem;
+        }
+
+        .price {
+          font-size: map-get(map-get($font, sizes), xlarge);
+        }
+      }
+    }
+
+    .notMemberPrice {
+      @include flexbox(row, center, center, 0.5rem);
+      width: 100%;
+      padding: 0 1.4rem;
+
+      span {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: map-get(map-get($font, sizes), xxsmall);
+        color: map-get($colors, darkGray);
+        line-height: 1.2rem;
+      }
+    }
+  }
+
+  @media (min-width: 769px) {
+    button:disabled {
+      margin-bottom: -1.2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    position: relative;
+    grid-template-columns: 1fr;
+    gap: map-get($spacings, xxsmall);
+    height: 33rem;
+    width: 18rem;
+    margin: 0 0 map-get($spacings, xlarge);
+
+    .details {
+      @include flexbox(column, center, center, 0.5rem);
+
+      .productTitle {
+        text-align: center;
+        margin-bottom: map-get($spacings, xxsmall);
+      }
+
+      .oldPrice {
+        font-size: map-get(map-get($font, sizes), xsmall);
+      }
+
+      .priceMember {
+        @include flexbox(row, center, center, 1rem);
+      }
+
+      button,
+      a {
+        position: absolute;
+        bottom: -4.7rem;
+        left: 0;
+      }
+    }
+  }
+}

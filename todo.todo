@@ -1,0 +1,47 @@
+CONFIGURAÇÕES INICIAIS:
+  ✔ SASS, Tema, Mixins
+
+MACROCOMPONENTES:
+  ✔ Header @done(21-10-11 14:28)
+  ☐ Cart
+  ✔ Banner @done(21-10-11 14:28)
+  ✔ ProductList @done(21-10-12 16:34)
+  ✔ MediaMatch @done(21-10-09 20:55)
+
+HEADER:
+  ✔ Logo @done(21-10-09 18:20)
+  ✔ Menu @done(21-10-11 14:28)
+    Requisição para buscar os menuItems da API.
+    Criação do Botão para a versão mobile
+  ✔ CartButton @done(21-10-10 18:43)
+  ✔ CartBadge @done(21-10-10 18:43)
+
+CART:
+  ☐ CartItem
+    - img
+    - name
+    - CloseButton
+    - Counter
+    - price
+
+  ✔ CartHeader @done(21-10-12 16:34)
+    - name
+    - quantity
+
+  ☐ CartFooter
+    - label
+    - total
+    - button
+
+Figma:
+  https://www.figma.com/file/YRI1hSz0WU6oVSvG7vcTxH/Teste-Front-end?node-id=1%3A172
+
+API:
+  https://run.mocky.io/v3/908ec5b5-1e5a-4602-9008-47719f7c6759
+
+
+TODO:
+  ☐ Cart Content
+  ☐ Cart Footer
+  ☐ Product Slider
+  ☐ Banner Slider (Optional)

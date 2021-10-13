@@ -1,0 +1,76 @@
+@import '@/sass/master';
+
+.productSliderWrapper {
+  .slick-track,
+  .slick-list {
+    display: flex;
+  }
+  .slick-slide > div {
+
+    flex: 1 0 auto;
+    height: 100%;
+  }
+  .slick-list {
+    margin: 0 -map-get($spacings, xxsmall);
+  }
+
+  .slick-dots {
+    list-style: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: map-get($spacings, small);
+
+    li {
+      background: map-get($colors, darkGray);;
+      width: .8rem;
+      height: .8rem;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 map-get($spacings, xxsmall);
+      cursor: pointer;
+
+      &.slick-active {
+        background: map-get($colors, wine);
+      }
+    }
+    button {
+      opacity: 0;
+      width: 1.2rem;
+      height: 1.2rem;
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    .slick-list {
+      margin: 0 -map-get($spacings, xsmall);
+    }
+  }
+
+  .slick-prev,
+  .slick-next {
+    display: block;
+    color: map-get($colors, wine);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    transform: translate(0, -50%);
+  }
+  .slick-prev {
+    left: -map-get($spacings, xxlarge);
+  }
+  .slick-next {
+    right: -map-get($spacings, xxlarge);
+  }
+  .slick-prev.slick-disabled,
+  .slick-next.slick-disabled {
+    visibility: hidden;
+  }
+}

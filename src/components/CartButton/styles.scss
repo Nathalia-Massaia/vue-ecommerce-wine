@@ -1,0 +1,34 @@
+@import '@/sass/master';
+
+.cartButtonWrapper {
+  width: 5.6rem;
+  height: 5.6rem;
+  @include flexbox(row, center, center, 0);
+  padding: 0.2rem 0.8rem;
+  position: relative;
+  background-color: map-get($colors, darkYellow);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: map-get($transition, default);
+
+  .iconWrapper {
+    height: 100%;
+    @include flexbox(row, flex-start, center, 0);
+    position: relative;
+
+    img {
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    position: absolute;
+    right: 10%;
+    transform: scale(.75);
+  }
+
+  &:hover {
+    filter: opacity(0.8);
+  }
+}

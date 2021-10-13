@@ -1,0 +1,32 @@
+{
+  "menuItems": [
+    {
+      "label": "Clube",
+      "link": "/clube"
+    },
+    {
+      "label": "Loja",
+      "link": "/loja"
+    },
+    {
+      "label": "Produtores",
+      "link": "/produtores"
+    },
+    {
+      "label": "Ofertas",
+      "link": "/ofertas"
+    },
+    {
+      "label": "Eventos",
+      "link": "/eventos"
+    }
+  ],
+  "images": {
+    "banner": {
+      "desktop": "/images/banner.svg",
+      "mobile": "/images/banner-mobile.svg",
+      "alt": "Banner Promocional",
+      "label": "Imagem dos Vinhos em Promoção e mensagem de desconto"
+    }
+  }
+}

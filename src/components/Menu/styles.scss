@@ -1,0 +1,144 @@
+@import '@/sass/master';
+
+.menuWrapper {
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: map-get($spacings, large);
+  }
+
+  a {
+    font-size: map-get(map-get($font, sizes), xlarge);
+    transition: map-get($transition, fast);
+    color: map-get($colors, gray);
+    text-decoration: none;
+    position: relative;
+
+    &.router-link-active,
+    &.router-link-exact-active {
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 0.3rem;
+        background-color: map-get($colors, wine);
+        animation: hoverAnimation 0.2s forwards;
+      }
+    }
+
+    &:hover {
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 0.3rem;
+        background-color: map-get($colors, wine);
+        animation: hoverAnimation 0.2s forwards;
+      }
+
+      @keyframes hoverAnimation {
+        from {
+          width: 0;
+          left: 50%;
+        }
+        to {
+          width: 100%;
+          left: 0;
+        }
+      }
+    }
+
+    @media (max-width: 868px) and (min-width: 768px) {
+      font-size: map-get(map-get($font, sizes), medium);
+    }
+  }
+
+  .mobileMenuWrapper {
+    position: relative;
+    transition: map-get($transition, slow);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    .menuButton {
+      @include flexbox(column, center, space-around, 0);
+      width: 3rem;
+      height: 3rem;
+      cursor: pointer;
+      position: absolute;
+      top: -1.5rem;
+      left: 0;
+
+      .line {
+        width: 100%;
+        height: 0.3rem;
+        background-color: map-get($colors, black);
+        transition: map-get($transition, default);
+      }
+
+      &.open {
+        top: 3rem;
+        left: 10%;
+
+        .line {
+          background-color: map-get($colors, lightGray);
+        }
+
+        .top {
+          transform: rotate(-45deg) translate(-0.8rem, 0.6rem);
+        }
+
+        .middle {
+          opacity: 0;
+        }
+
+        .bottom {
+          transform: rotate(45deg) translate(-0.8rem, -0.5rem);
+        }
+      }
+    }
+
+    .mobileMenu {
+      transition: map-get($transition, slow);
+
+      ul {
+        opacity: 0;
+        transform: translateY(-50%) translateX(-50%);
+        position: absolute;
+        pointer-events: none;
+      }
+    }
+
+    &.menu--open {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: map-get($layers, menu);
+      background-color: map-get($colors, black);
+      opacity: 0.99;
+      transition: all 0.3s ease-in-out;
+
+      ul {
+        opacity: 1;
+        height: 100%;
+        @include flexbox(column, center, center, 4rem);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        transition: map-get($transition, slow);
+        pointer-events: all;
+
+        a {
+          text-decoration: none;
+          color: map-get($colors, lightGray);
+          font-size: map-get(map-get($font, sizes), xlarge);
+        }
+      }
+    }
+  }
+}

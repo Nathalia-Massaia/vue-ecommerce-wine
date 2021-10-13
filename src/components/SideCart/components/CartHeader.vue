@@ -7,7 +7,7 @@
     </div>
 
     <div class="title">
-      WineBox {{ cartQuantity ? `(${cartQuantity})` : '' }}
+      WineBox {{ cartItems.length ? `(${cartItems.length})` : '' }}
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default Vue.extend({
   },
   computed: {
     ...mapState({
-      cartQuantity: (state: any) => state.cartQuantity,
+      cartItems: (state: any) => state.cartItems,
     }),
   },
   methods: {

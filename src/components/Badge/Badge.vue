@@ -1,6 +1,6 @@
 <template>
-  <div class="badgeWrapper" :style="cartQuantity ? 'opacity: 1' : 'opacity: 0'">
-    {{ cartQuantity }}
+  <div class="badgeWrapper" :style="cartItems.length ? 'opacity: 1' : 'opacity: 0'">
+    {{ cartItems.length }}
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default Vue.extend({
   name: 'Badge',
   computed: {
     ...mapState({
-      cartQuantity: (state: any) => state.cartQuantity,
+      cartItems: (state: any) => state.cartItems,
     }),
   },
 });

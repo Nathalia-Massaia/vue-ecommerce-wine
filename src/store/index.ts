@@ -1,5 +1,6 @@
 import {
   ProductProps,
+  CartProps,
   MenuItemProps,
   ToastProps,
   CartActionsEnum,
@@ -7,6 +8,7 @@ import {
 import Vue from 'vue';
 import Vuex from 'vuex';
 import ApiService from '@/services/api.service';
+import { calculateTotal, formatName } from '@/utils';
 
 Vue.use(Vuex);
 
@@ -14,8 +16,12 @@ export default new Vuex.Store({
   state: {
     menuItems: [] as MenuItemProps[],
     isMobileMenuOpen: false,
+    isModalOpen: false,
     banner: {},
-    cartItems: [] as ProductProps[],
+    cartItems: {
+      items: [],
+      total: 0,
+    } as CartProps,
     toastData: {} as ToastProps,
   },
   mutations: {
@@ -25,34 +31,58 @@ export default new Vuex.Store({
     SET_MOBILE_MENU_OPEN(state, data) {
       state.isMobileMenuOpen = data;
     },
+    SET_MODAL_OPEN(state, data) {
+      state.isModalOpen = data;
+    },
     SET_TOASTDATA(state, data) {
       state.toastData = data;
     },
     SET_CART_ITEMS(
       state,
-      data: { item: ProductProps; action: CartActionsEnum },
+      data: { items: ProductProps[]; action: CartActionsEnum },
     ) {
-      if (data.action === CartActionsEnum.ADD) {
-        const items = [...state.cartItems, data.item];
-        state.cartItems = items;
-      } else {
-        const formatName = (name: string) => {
-          return name
-            .split(' ')
-            .join('')
-            .toLowerCase();
-        };
+      switch (data.action) {
+        case CartActionsEnum.ADD:
+          const items = [...state.cartItems.items, ...data.items];
 
-        const index = state.cartItems.findIndex(
-          item => formatName(item.name) === formatName(data.item.name),
-        );
+          state.cartItems = {
+            items,
+            total: calculateTotal(items),
+          };
+          break;
 
-        if (index) {
-          const items = state.cartItems.splice(index, 1);
-          state.cartItems = items;
-        } else {
+        case CartActionsEnum.DELETE:
+          state.cartItems.items = state.cartItems.items.filter(
+            item => formatName(item.name) !== formatName(data.items[0].name),
+          );
+
+          state.cartItems = {
+            items: [...state.cartItems.items],
+            total: calculateTotal([...state.cartItems.items]),
+          };
+          break;
+
+        case CartActionsEnum.DECREASE:
+          const repeateds: ProductProps[] = [];
+
+          const diffItems = state.cartItems.items.filter((item, index) => {
+            if (state.cartItems.items.indexOf(item) !== index) {
+              repeateds.push(item);
+            }
+
+            return state.cartItems.items.indexOf(item) == index;
+          });
+
+          repeateds.pop();
+
+          state.cartItems = {
+            items: [...diffItems, ...repeateds],
+            total: calculateTotal([...diffItems, ...repeateds]),
+          };
+          break;
+
+        default:
           return;
-        }
       }
     },
     SET_BANNER(state, data) {
@@ -83,6 +113,9 @@ export default new Vuex.Store({
     setMobileMenuOpen({ commit }) {
       commit('SET_MOBILE_MENU_OPEN', !this.state.isMobileMenuOpen);
     },
+    setModalOpen({ commit }) {
+      commit('SET_MODAL_OPEN', !this.state.isModalOpen);
+    },
     setToastData({ commit }, data: ToastProps) {
       commit('SET_TOASTDATA', { ...data, isVisible: true });
 
@@ -92,9 +125,9 @@ export default new Vuex.Store({
     },
     setCartItems(
       { commit },
-      data: { item: ProductProps; action: CartActionsEnum },
+      data: { items: ProductProps[]; action: CartActionsEnum },
     ) {
-      if (data.item && data.action) {
+      if (data.items && data.action) {
         commit('SET_CART_ITEMS', data);
       }
     },

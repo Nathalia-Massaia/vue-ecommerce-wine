@@ -7,7 +7,7 @@
     </div>
 
     <div class="title">
-      WineBox {{ cartItems.length ? `(${cartItems.length})` : '' }}
+      WineBox {{ cartItems.items.length ? `(${cartItems.items.length})` : '' }}
     </div>
   </div>
 </template>

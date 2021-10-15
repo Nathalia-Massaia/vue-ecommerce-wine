@@ -1,8 +1,8 @@
 <template>
   <div class="sideCartWrapper">
-    <CartHeader @closeCart="handleCartClose" />
-    <CartContent />
-    <CartFooter />
+    <CartHeader @closeCart="handleCartClose" :cartItems='cartItems'/>
+    <CartContent :cartItems='cartItems'/>
+    <CartFooter :cartItems='cartItems'/>
   </div>
 </template>
 
@@ -11,6 +11,7 @@ import Vue from 'vue';
 import CartHeader from './components/CartHeader.vue';
 import CartContent from './components/CartContent.vue';
 import CartFooter from './components/CartFooter.vue';
+import { mapState } from 'vuex';
 
 export default Vue.extend({
   name: 'SideCart',
@@ -19,8 +20,10 @@ export default Vue.extend({
     CartContent,
     CartFooter,
   },
-  data() {
-    return {};
+  computed: {
+    ...mapState({
+      cartItems: (state: any) => state.cartItems,
+    }),
   },
   methods: {
     handleCartClose() {

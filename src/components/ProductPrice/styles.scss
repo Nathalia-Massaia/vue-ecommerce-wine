@@ -1,0 +1,32 @@
+@import '@/sass/master';
+
+.productPriceWrapper {
+  @include flexbox(row, baseline, center, 0);
+  color: map-get($colors, wine);
+  font-weight: map-get($font, bold);
+  font-size: map-get(map-get($font, sizes), medium);
+
+  .currencySymbol {
+    margin-right: 0.3rem;
+  }
+
+  &.small {
+    font-size: map-get(map-get($font, sizes), small);
+
+    .price {
+      font-size: map-get(map-get($font, sizes), large);
+    }
+  }
+
+  &.medium {
+    .price {
+      font-size: map-get(map-get($font, sizes), xlarge);
+    }
+  }
+
+  &.large {
+    .price {
+      font-size: map-get(map-get($font, sizes), xxlarge);
+    }
+  }
+}

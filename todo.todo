@@ -41,6 +41,5 @@ API:
 
 
 TODO:
-  ☐ Cart Content
-  ☐ Cart Footer
-  ✔ Product Slider @done(21-10-12 21:31)
+  ☐ Reactive Price on Cart Footer
+  ☐ Increase Counter when more than one equal Product was added

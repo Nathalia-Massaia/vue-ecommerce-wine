@@ -1,12 +1,13 @@
 @import '@/sass/master';
 
 .productSliderWrapper {
+  margin-bottom: map-get($spacings, large);
+  
   .slick-track,
   .slick-list {
     display: flex;
   }
   .slick-slide > div {
-
     flex: 1 0 auto;
     height: 100%;
   }
@@ -22,9 +23,9 @@
     margin-top: map-get($spacings, small);
 
     li {
-      background: map-get($colors, darkGray);;
-      width: .8rem;
-      height: .8rem;
+      background: map-get($colors, darkGray);
+      width: 0.8rem;
+      height: 0.8rem;
       border-radius: 100%;
       display: flex;
       align-items: center;
@@ -45,7 +46,6 @@
   }
 
   @media (min-width: 768px) {
-
     .slick-list {
       margin: 0 -map-get($spacings, xsmall);
     }

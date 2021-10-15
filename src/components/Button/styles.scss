@@ -1,6 +1,8 @@
 @import '@/sass/master';
 
 .buttonWrapper {
+
+
   button,
   a {
     text-decoration: none;
@@ -22,7 +24,7 @@
       background-color: map-get($colors, midGray);
       cursor: not-allowed;
 
-      &:hover{
+      &:hover {
         opacity: 1;
       }
     }
@@ -46,9 +48,5 @@
 
   .large {
     padding: map-get($spacings, xsmall) map-get($spacings, xxlarge);
-  }
-
-  .fullWidth {
-    width: 100%;
   }
 }

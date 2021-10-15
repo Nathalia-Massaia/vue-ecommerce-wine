@@ -1,10 +1,14 @@
 <template>
   <div class="homeWrapper">
-    <!-- <Banner /> -->
+    <Empty :visible="!banner.desktop" :quantity="1" />
+    <template>
+      <Banner v-if="banner" />
+    </template>
 
-    <!-- <Counter /> -->
-    <EmptyList v-if="!allProducts.length" />
-    <ProductSlider :products="allProducts" v-if="allProducts.length" />
+    <template>
+      <Empty :visible="!allProducts.length" :quantity="3" :multiple="true" />
+      <ProductSlider :products="allProducts" v-if="allProducts.length" />
+    </template>
   </div>
 </template>
 
@@ -14,9 +18,11 @@ import Banner from '@/components/Banner/Banner.vue';
 import ProductListItem from '@/components/ProductListItem/ProductListItem.vue';
 import Counter from '@/components/Counter/Counter.vue';
 import ProductSlider from '@/components/ProductSlider/ProductSlider.vue';
-import EmptyList from '@/components/EmptyList/EmptyList.vue';
+import Empty from '@/components/Empty/Empty.vue';
+import CartItem from '@/components/CartItem/CartItem.vue';
 import ProductService from '@/services/product.service';
 import { ProductProps } from '@/types';
+import { mapState } from 'vuex';
 
 export default Vue.extend({
   name: 'Home',
@@ -25,12 +31,18 @@ export default Vue.extend({
     ProductListItem,
     Counter,
     ProductSlider,
-    EmptyList,
+    Empty,
+    CartItem,
   },
   data() {
     return {
       allProducts: [] as ProductProps[],
     };
+  },
+  computed: {
+    ...mapState({
+      banner: (state: any) => state.banner,
+    }),
   },
   async mounted() {
     await this.$store.dispatch('getImages');

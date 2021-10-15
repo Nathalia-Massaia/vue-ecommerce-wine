@@ -1,11 +1,8 @@
 <template>
-  <div class="buttonWrapper">
+  <div class="buttonWrapper" :style="fullWidth ? 'width: 100%' : ''">
     <button
-      :class="[
-        type ? type : 'primary',
-        size ? size : 'medium',
-        fullWidth ? 'fullWidth' : '',
-      ]"
+      :class="[type ? type : 'primary', size ? size : 'medium']"
+      :style="fullWidth ? 'width: 100%' : ''"
       :disabled="disabled"
       @click="handleAction"
       v-if="!route"
@@ -36,10 +33,10 @@ export default Vue.extend({
   props: ['label', 'type', 'size', 'fullWidth', 'route', 'disabled'],
 
   methods: {
-    handleAction(){
-      this.$emit('action')
-    }
-  }
+    handleAction() {
+      this.$emit('action');
+    },
+  },
 });
 </script>
 

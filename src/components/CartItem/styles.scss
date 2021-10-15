@@ -1,0 +1,75 @@
+@import '@/sass/master';
+
+.cartItemWrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 9.7rem 1fr;
+  gap: map-get($spacings, xsmall);
+  padding: map-get($spacings, xsmall) 0 map-get($spacings, xxsmall);
+
+  .picture {
+    @include flexbox(row, center, center, 0);
+    min-height: 12rem;
+    width: 9.7rem;
+
+    img {
+      height: 100%;
+      max-width: 100%;
+    }
+  }
+
+  .details {
+    @include flexbox(column, flex-start, space-between, 0);
+
+    .productTitle {
+      @include flexbox(row, center, space-between, 0);
+      font-size: map-get(map-get($font, sizes), medium);
+      line-height: 1.6rem;
+      font-weight: map-get($font, bold);
+      position: relative;
+      width: 100%;
+
+      h4 {
+        width: 80%;
+      }
+
+      .closeButton {
+        border: 0.1rem solid map-get($colors, midGray);
+        padding: map-get($spacings, xxsmall);
+        border-radius: 50%;
+        height: 2rem;
+        width: 2rem;
+        @include flexbox(row, center, center, 0);
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+
+        &::after,
+        &::before {
+          content: '';
+          height: 0.01rem;
+          width: 1rem;
+          background-color: map-get($colors, midGray);
+          position: absolute;
+        }
+
+        &::after {
+          transform: rotate(45deg);
+        }
+
+        &::before {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    .productPrice {
+      @include flexbox(row, center, space-between, 0);
+      width: 100%;
+
+      > div:last-child{
+        padding-left: map-get($spacings, xxsmall );
+      }
+    }
+  }
+}

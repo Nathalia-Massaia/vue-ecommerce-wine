@@ -12,13 +12,20 @@ export type ProductProps = {
   priceStock: number;
 };
 
+export type CartProps = {
+  total: number;
+  items: ProductProps[];
+};
+
 export type ToastProps = {
   isVisible: boolean;
   message: string;
   timeout: number;
-}
+};
 
 export enum CartActionsEnum {
   ADD = 1,
   DELETE = 2,
+  INCREASE = 3,
+  DECREASE = 4,
 }

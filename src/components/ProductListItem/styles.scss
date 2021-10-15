@@ -53,21 +53,6 @@
         color: map-get($colors, black);
         line-height: 1rem;
       }
-
-      .priceWrapper {
-        @include flexbox(row, baseline, center, 0);
-        color: map-get($colors, wine);
-        font-weight: map-get($font, bold);
-        font-size: map-get(map-get($font, sizes), medium);
-
-        .currencySymbol {
-          margin-right: 0.3rem;
-        }
-
-        .price {
-          font-size: map-get(map-get($font, sizes), xlarge);
-        }
-      }
     }
 
     .notMemberPrice {

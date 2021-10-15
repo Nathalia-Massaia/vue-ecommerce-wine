@@ -39,6 +39,7 @@ export default Vue.extend({
 .underConstructionWrapper {
   position: fixed;
   left: 0;
+  top: 10%;
   width: 100%;
   height: 100%;
   display: flex;
@@ -96,7 +97,7 @@ export default Vue.extend({
     @include flexbox(column, center, center, 3rem);
     align-self: center;
     justify-content: center;
-    margin: -10rem auto 0;
+    margin: 5rem auto 0;
 
     h3 {
       font-size: 3rem;

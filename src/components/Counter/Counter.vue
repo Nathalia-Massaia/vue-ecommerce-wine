@@ -1,37 +1,34 @@
-  <template>
-    <div class='counterWrapper'>
-      <button :disabled="count <= 1" class="decreaseButton"  @click="decreaseCounter"> - </button>
-      <div class="counterValue">
-      <input v-model="count" type="number">
-      </div>
-      <button class="increaseButton" @click="increaseCounter"> + </button>
-
-
+<template>
+  <div class="counterWrapper">
+    <button
+      :disabled="count <= 1"
+      class="decreaseButton"
+      @click="$emit('decrease')"
+    >
+      -
+    </button>
+    <div class="counterValue">
+      <input
+        v-model="count"
+        type="number"
+        min="1"
+        @input="$emit('inputChange', $event)"
+        readonly
+      />
     </div>
-  </template>
+    <button class="increaseButton" @click="$emit('increase')">+</button>
+  </div>
+</template>
 
-  <script lang='ts'>
-  import Vue from 'vue';
-  export default Vue.extend({
-    name: 'Counter',
-    data(){
-      return {
-        count: 1 ,
-      }
-    },
-    methods:{
+<script lang="ts">
+import Vue from 'vue';
 
-      increaseCounter: function() {
-        this.count += 1;
-      },
+export default Vue.extend({
+  name: 'Counter',
+  props: ['count'],
+});
+</script>
 
-      decreaseCounter: function() {
-        this.count -= 1;
-      }
-    },
-  });
-  </script>
-
-  <style lang="scss">
-  @import './styles.scss';
-  </style>
+<style lang="scss">
+@import './styles.scss';
+</style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="badgeWrapper" :style="cartItems.length ? 'opacity: 1' : 'opacity: 0'">
-    {{ cartItems.length }}
+  <div class="badgeWrapper" :style="cartItems.items.length ? 'opacity: 1' : 'opacity: 0'">
+    {{ cartItems.items.length }}
   </div>
 </template>
 

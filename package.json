@@ -7,7 +7,8 @@
     "api": "cd database && json-server --watch db.json",
     "start:all": "npm-run-all -p api serve",
     "build": "vue-cli-service build",
-    "generate": "yarn plop --plopfile ./generators/plopfile.js"
+    "generate": "yarn plop --plopfile ./generators/plopfile.js",
+    "ts-check": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
     "axios": "^0.22.0",

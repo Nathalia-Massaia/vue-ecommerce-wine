@@ -16,7 +16,6 @@ export default new Vuex.Store({
   state: {
     menuItems: [] as MenuItemProps[],
     isMobileMenuOpen: false,
-    isModalOpen: false,
     banner: {},
     cartItems: {
       items: [],
@@ -30,9 +29,6 @@ export default new Vuex.Store({
     },
     SET_MOBILE_MENU_OPEN(state, data) {
       state.isMobileMenuOpen = data;
-    },
-    SET_MODAL_OPEN(state, data) {
-      state.isModalOpen = data;
     },
     SET_TOASTDATA(state, data) {
       state.toastData = data;
@@ -112,9 +108,6 @@ export default new Vuex.Store({
     },
     setMobileMenuOpen({ commit }) {
       commit('SET_MOBILE_MENU_OPEN', !this.state.isMobileMenuOpen);
-    },
-    setModalOpen({ commit }) {
-      commit('SET_MODAL_OPEN', !this.state.isModalOpen);
     },
     setToastData({ commit }, data: ToastProps) {
       commit('SET_TOASTDATA', { ...data, isVisible: true });
